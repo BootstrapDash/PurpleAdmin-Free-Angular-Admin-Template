@@ -1,55 +1,27 @@
-# PurpleAdmin Free Angular Admin Template
+# PurpleAngular
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
-PurpleAdmin Free Angular Admin Template is a free admin template based on Bootstrap 4. The template is built using the framework NG-Bootstrap.
+## Development server
 
-PrupleAdmin Free Angular Admin Template is a completely responsive and mobile-first admin template that provides a great foundation for your Angular + Bootstrap project.
-This remarkably flexible and highly customizable template helps you create an amazing UI for your admin panel.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Demo
+## Code scaffolding
 
-Visit: http://www.bootstrapdash.com/demo/purple-free-angular/
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Installation
+## Build
 
-### What's included
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+## Running unit tests
 
-```
-PurpleAdmin Free Angular Admin Template/
-├── dist/
-├── e2e/
-├── src/
-├──.angular-cli.json
-├── .editorconfig
-├── angular.json
-├── package.json
-├── README.md
-├── tsconfig.json
-├── tslint.json
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### Usage
+## Running end-to-end tests
 
-``` bash
-# clone the repo
-$ git clone 
-https://github.com/BootstrapDash/PurpleAdmin-Free-Angular-Admin-Template.git
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# go into app's directory
-$ cd PurpleAdmin-Free-Angular-Admin-Template
+## Further help
 
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:4200
-ng serve
-
-# build for production with minification
-ng build
-```
-
-### Go Premium!!
-
-Do you need a template with more features and functionalities? Get more with our collection of the premium template with more plugins, eye catching animations, UI components, and sample pages all fitting together with a high-quality design. Visit https://www.bootstrapdash.com for more admin templates.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
