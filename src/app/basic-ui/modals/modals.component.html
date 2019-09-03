@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Large Modal</h4>
+        <p class="card-description">Large sized modal with max-width set to <code>90%</code></p>
+        <!-- Dummy Modal Starts -->
+        <div class="modal demo-modal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-light">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dummy Modal Ends -->
+        <!-- Modal starts -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary btn-sm" (click)="openModal(exampleModalContent)">Click for demo<i class="mdi mdi-arrow-right-circle-outline ml-1"></i></button>
+        </div>
+        <ng-template class="modal fade" #exampleModalContent let-modal>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="modal.close()">Submit</button>
+              <button type="button" class="btn btn-light" data-dismiss="modal" (click)="modal.close()">Cancel</button>
+            </div>
+          </div>
+        </ng-template>
+        <!-- Modal Ends -->
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Medium Modal</h4>
+        <p class="card-description">Normal modal with default bootstrap settings</p>
+        <!-- Dummy Modal Starts -->
+        <div class="modal demo-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-light">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dummy Modal Ends -->
+        <!-- Modal starts -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary btn-sm" (click)="openMediumModal(mediumModalContent)">Click for demo<i class="mdi mdi-arrow-right-circle-outline ml-1"></i></button>
+        </div>
+        <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+              <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="modal.close()">Submit</button>
+              <button type="button" class="btn btn-light" (click)="modal.close()">Cancel</button>
+            </div>
+          </div>
+        </ng-template>
+        <!-- Modal Ends -->
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Small Modal</h4>
+        <p class="card-description">Small modal with max-width set to <code>300px</code></p>
+        <!-- Dummy Modal Starts -->
+        <div class="modal demo-modal">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-light">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dummy Modal Ends -->
+        <!-- Modal starts -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary btn-sm" (click)="openSmallModal(smallModalContent)">Click for demo<i class="mdi mdi-arrow-right-circle-outline ml-1"></i></button>
+        </div>
+        <ng-template #smallModalContent let-modal class="modal fade" aria-labelledby="exampleModalLabel-3">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel-3">Modal title</h5>
+              <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="modal.close()">Submit</button>
+              <button type="button" class="btn btn-light" (click)="modal.close()">Cancel</button>
+            </div>
+          </div>
+        </ng-template>
+        <!-- Modal Ends -->
+      </div>
+    </div>
+  </div>
+</div>

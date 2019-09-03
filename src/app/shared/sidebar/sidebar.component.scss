@@ -1,0 +1,368 @@
+/* Sidebar */
+
+@import '../../../styles.scss';
+.sidebar {
+  min-height: calc(100vh - #{$navbar-height});
+  background: $sidebar-bg;
+  font-family: $type1-regular;
+  padding: 0;
+  width: $sidebar-width-lg;
+  z-index: 11;
+  transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+  -webkit-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+  -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+  -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+  height: 100%;
+
+  .nav {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    &:not(.sub-menu) {
+      padding-bottom: 60px;
+    }
+
+    .nav-item {
+      padding:0 $sidebar-menu-padding-x;
+      @include transition-duration(0.25s);
+      transition-property: background;
+      -webkit-transition-property: background;
+      .collapse {
+        z-index: 999;
+      }
+
+      .nav-link {
+        @include display-flex;
+        @include align-items(center);
+        white-space: nowrap;
+        padding:$sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
+        color: $sidebar-menu-color;
+        @include transition-duration(0.45s);
+        transition-property: color;
+        -webkit-transition-property: color;
+        cursor: pointer;
+
+        i {
+          color: inherit;
+
+          &.menu-icon {
+            font-size: $sidebar-icon-font-size;
+            line-height: 1;
+            margin-left: auto;
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+            color: $sidebar-menu-icon-color;
+            &:before {
+              vertical-align: middle;
+            }
+          }
+
+          &.menu-arrow {
+            font: normal normal normal 24px/1 "Material Design Icons";
+            line-height: 1;
+            font-size: $sidebar-icon-font-size;
+            margin-left: auto;
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+            color: $sidebar-menu-arrow-color;
+            &:before{
+              content: "\f141";
+              font-size: inherit;
+              color: inherit;
+            }
+            + .menu-icon {
+              margin-left: .25rem;
+              margin-bottom: .25rem;
+              .rtl & {
+                margin-left: 0;
+                margin-right: .25rem;
+              }
+            }
+          }
+        }
+
+        .menu-title {
+          color: inherit;
+          display: inline-block;
+          font-size: $sidebar-menu-font-size;
+          line-height: 1;
+          vertical-align: middle;
+        }
+
+        .badge {
+          margin-right: auto;
+          margin-left: 1rem;
+        }
+
+        &[aria-expanded="true"]{
+          .menu-arrow{
+            &:before{
+              content: "\f140";
+            }
+          }
+        }
+      }
+
+      &.active {
+        .nav-link {
+          .menu-title {
+            color: $sidebar-menu-active-color;
+            font-family: $type1-medium;            
+          }
+          i {
+            color: theme-color(primary);
+          }
+        }
+      }
+
+      &:hover{
+        background: $sidebar-menu-hover-bg;
+      }
+      &.nav-profile {
+        .nav-link {
+          height: auto;
+          line-height: 1;
+          border-top: 0;
+          padding: 1.25rem 0;
+          .nav-profile-image {
+            width: 44px;
+            height: 44px;
+            img {
+              width: 44px;
+              height: 44px;
+              border-radius: 100%;
+            }
+          }
+          .nav-profile-text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            .rtl & {
+              margin-left: auto;
+              margin-right: 1rem;
+            }
+          }
+          .nav-profile-badge {
+            font-size: 1.125rem;
+            margin-left: auto;
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+          }
+        }
+      }
+      &.sidebar-actions {
+        margin-top: 1rem;
+        .nav-link {
+          border-top: 0;
+          display: block;
+          height: auto;
+        }
+        &:hover {
+          background: initial;
+          .nav-link {
+            color: initial;
+          }
+        }
+      }
+    }
+
+    &:not(.sub-menu) {
+      > .nav-item {
+        &:hover {
+          &:not(.nav-category):not(.nav-profile) {
+            > .nav-link {
+              color: $sidebar-menu-hover-color;
+            }
+          }
+        }
+      }
+    }
+    &.sub-menu {
+      margin-bottom: 20px;
+      margin-top:0;
+      list-style: none;
+
+      .nav-item {
+        padding: 0;
+        .nav-link {
+          color: $sidebar-submenu-color;
+          padding: $sidebar-submenu-item-padding;
+          position: relative;
+          font-size: $sidebar-submenu-font-size;
+          line-height: 1;
+          height: auto;
+          border-top: 0;
+          &:before {
+            content: "\F054";
+            font-family: "Material Design Icons";
+            display: block;
+            position: absolute;
+            left:0px;
+            .rtl & {
+              left: auto;
+              right: 0;
+            }
+            top:50%;
+            @include transform(translateY(-50%));
+            color: lighten($sidebar-submenu-color, 10%);
+            font-size: .75rem;
+          }
+          &.active {
+            color: $sidebar-menu-active-color;
+            background: transparent;
+          }
+          &:hover {
+            color: $sidebar-submenu-hover-color;
+          }
+        }
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+
+
+// Sidebar icon only layout start
+:host-context(.sidebar-icon-only) {
+  @media(min-width: 992px) {
+    .sidebar {
+      width: $sidebar-width-icon;
+      .nav {
+        overflow: visible;
+        margin-left: 0;
+        margin-right: 0;
+        .nav-item {
+          padding: 0 1rem;
+          position: relative;
+          .nav-link {
+            display: block;
+            padding-left: .5rem;
+            padding-right: .5rem;            
+            text-align: center;
+            position: static;
+            .menu-title,
+            .badge,.menu-sub-title {
+              display: none;
+            }
+            .menu-title {
+              @include border-radius(0 5px 5px 0px);
+              background: $sidebar-menu-hover-bg;
+            }
+            i {
+              &.menu-icon {
+                margin-right: 0;
+                margin-left: 0;
+                margin-bottom: 0;
+              }
+              &.menu-arrow {
+                display: none;
+              }
+            }
+            &[aria-expanded] {
+              .menu-title {
+                @include border-radius(0 5px 0 0px);
+              }
+            }
+          }
+          .collapse {
+            display: none;
+          }
+          &.hover-open {
+            .nav-link {
+              .menu-title {
+                @include display-flex;
+                @include align-items(center);
+                background: $sidebar-menu-hover-bg;
+                padding: 0.5rem 1.4rem;
+                left: $sidebar-width-icon;
+                position: absolute;
+                text-align: left;
+                top: 0;
+                bottom: 0;
+                width: $icon-only-collapse-width;
+                z-index: 1;
+                line-height: 1.8;
+                -webkit-box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);
+                        box-shadow: 4px 0px 7px 0px rgba(182, 185, 189, 0.25);              
+                &:after {
+                  display: none;
+                }
+              }
+            }
+            .collapse,
+            .collapsing {
+              display: block;
+              background: $icon-only-menu-bg-light;
+              @include border-radius(0 0 5px 0);
+              position: absolute;
+              left: $sidebar-width-icon;
+              width: $icon-only-collapse-width;
+              -webkit-box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+                      box-shadow: 4px 4px 7px 0px rgba(182, 185, 189, 0.25);
+            }
+          }
+          &.nav-profile {
+            padding: 0 .3rem;
+            .nav-link {
+              .nav-profile-text {
+                display: none;
+              }
+              .nav-profile-badge {
+                display: none;
+              }
+            }
+          }
+        }
+        &:not(.sub-menu) {
+          .nav-item {
+            &.active {
+              border-radius: 0;
+            }
+            &:hover {
+              .nav-link {
+                border-radius: 0;
+              }
+            }
+          }
+        }
+        &.sub-menu {
+          padding: $sidebar-icon-only-submenu-padding;
+          .nav-item {
+            .nav-link {
+              text-align: left;
+              padding-left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// Sidebar icon only layout end
+
+
+/* style for off-canvas menu*/
+@media screen and (max-width: 991px) {
+  .sidebar-offcanvas {
+    position: fixed;
+    max-height: calc(100vh - #{$navbar-height});
+    top: $navbar-height;
+    bottom: 0;
+    overflow: auto;
+    right: -$sidebar-width-lg;
+    -webkit-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    &.active {
+      right: 0;
+    }
+  }
+}

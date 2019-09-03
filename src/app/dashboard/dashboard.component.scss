@@ -1,1 +1,91 @@
+@import '../../styles.scss';
 
+.rounded-legend {
+  ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    li {
+      list-style-type: none;
+      color: $text-muted;
+      font-size: .75rem;
+      .legend-dots {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        display: inline-block;
+        vertical-align: text-bottom;
+        margin-right: .5rem;
+        .rtl & {
+          margin-left: .5rem;
+        }
+      }
+    }
+  }
+  &.legend-horizontal {
+    @include display-flex;
+    ul {
+      li {
+        display: inline-block;
+        margin-right: 1.5rem;
+        .rtl & {
+          margin-right: auto;
+          margin-left: 1.5rem;
+        }
+      }
+    }
+  }
+  &.legend-vertical {
+    ul {
+      li {
+        margin-top: 1rem;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+#visit-sale-chart-legend {
+  ul {
+    li {
+      &:nth-child(1) {
+        .legend-dots {
+          background: linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1));
+        }
+      }
+      &:nth-child(2) {
+        .legend-dots {
+          background: linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1));
+        }
+      }
+      &:nth-child(3) {
+        .legend-dots {
+          background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))
+        }
+      }
+    }
+  }
+}
+
+#traffic-chart-legend {
+  ul {
+    li {
+      &:nth-child(1) {
+        .legend-dots {
+          background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))
+        }
+      }
+      &:nth-child(2) {
+        .legend-dots {
+          background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1));
+        }
+      }
+      &:nth-child(3) {
+        .legend-dots {
+          background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1));
+        }
+      }
+    }
+  }
+}

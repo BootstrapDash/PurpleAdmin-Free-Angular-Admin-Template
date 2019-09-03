@@ -1,0 +1,18 @@
+<div class="list-wrapper pt-2">
+  <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+    <li *ngFor="let todo of todoArray; let i = index" [ngClass]="{'completed' : todo.completed }">
+      <div class="form-check form-check-flat">
+        <label class="form-check-label">
+          <input class="checkbox" type="checkbox" (change)="changeTodoStatus($event, i)">
+          {{todo.task}}
+          <i class="input-helper"></i>
+        </label>
+      </div>
+      <i class="remove mdi mdi-close" (click)="removeTodoItem(todo)"></i>
+    </li>
+  </ul>
+</div>
+<form class="add-items d-flex mb-0 mt-2" [formGroup]="form" (ngSubmit)="addTodo()">
+  <input type="text" class="form-control todo-list-input" formControlName="todoitem" placeholder="Add new task">
+  <button class="add btn btn-primary todo-list-add-btn py-2" type="submit" [disabled]="form.invalid">Add</button>
+</form>

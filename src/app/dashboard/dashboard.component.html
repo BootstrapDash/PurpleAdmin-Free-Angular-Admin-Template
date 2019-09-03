@@ -53,6 +53,55 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-lg-7 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-wrap justify-content-between">
+          <h4 class="card-title">Visit And Sales Statistics</h4>
+          <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal">
+            <ul>
+              <li>
+                <span class="legend-dots"></span>CHN
+              </li>
+              <li>
+                <span class="legend-dots"></span>USA
+              </li>
+              <li class="mr-0">
+                <span class="legend-dots"></span>UK
+              </li>
+            </ul>
+          </div>
+        </div>
+        <canvas baseChart #visitSaleChart [chartType]="'bar'" [datasets]="visitSaleChartData" [labels]="visitSaleChartLabels" [options]="visitSaleChartOptions" [colors]="visitSaleChartColors"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Traffic Sources</h4>
+        <canvas baseChart [chartType]="'doughnut'" [datasets]="trafficChartData" [labels]="trafficChartLabels" [options]="trafficChartOptions" [colors]="trafficChartColors"></canvas>
+        <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4">
+          <ul>
+            <li>
+              <span class="legend-dots"></span>Search Engines
+              <span class="float-right">30%</span>
+            </li>
+            <li>
+              <span class="legend-dots"></span>Direct Click
+              <span class="float-right">30%</span>
+            </li>
+            <li>
+              <span class="legend-dots"></span>Bookmarks Click
+              <span class="float-right">40%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="row">
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body">
@@ -159,7 +208,52 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-md-5 grid-margin stretch-card">
+    <div class="card">
+        <ngb-datepicker #dp [(ngModel)]="date" (navigate)="date = $event.next" class="w-100 border-0"></ngb-datepicker>
+    </div>
+  </div>
   <div class="col-md-7 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Recent Updates</h4>
+        <div class="d-flex">
+          <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
+            <i class="mdi mdi-account-outline icon-sm mr-2"></i>
+            <span>jack Menqu</span>
+          </div>
+          <div class="d-flex align-items-center text-muted font-weight-light">
+            <i class="mdi mdi-clock icon-sm mr-2"></i>
+            <span>October 3rd, 2018</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-6 pr-1">
+            <img src="assets/images/dashboard/img_1.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
+            <img src="assets/images/dashboard/img_4.jpg" class="mw-100 w-100 rounded" alt="image">
+          </div>
+          <div class="col-6 pl-1">
+            <img src="assets/images/dashboard/img_2.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
+            <img src="assets/images/dashboard/img_3.jpg" class="mw-100 w-100 rounded" alt="image">
+          </div>
+        </div>
+        <div class="d-flex mt-5 align-items-top">
+          <img src="assets/images/faces/face3.jpg" class="img-sm rounded-circle mr-3" alt="image">
+          <div class="mb-0 flex-grow">
+            <h5 class="mr-2 mb-2">School Website - Authentication Module.</h5>
+            <p class="mb-0 font-weight-light">It is a long established fact that a reader will be distracted by the readable
+              content of a page.</p>
+          </div>
+          <div class="ml-auto">
+            <i class="mdi mdi-heart-outline text-muted"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7 grid-margin grid-margin-md-0 stretch-card">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Project Status</h4>
@@ -284,41 +378,11 @@
       </div>
     </div>
   </div>
-  <div class="col-md-5 grid-margin stretch-card">
+  <div class="col-md-5 stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Recent Updates</h4>
-        <div class="d-flex">
-          <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
-            <i class="mdi mdi-account-outline icon-sm mr-2"></i>
-            <span>jack Menqu</span>
-          </div>
-          <div class="d-flex align-items-center text-muted font-weight-light">
-            <i class="mdi mdi-clock icon-sm mr-2"></i>
-            <span>October 3rd, 2018</span>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6 pr-1">
-            <img src="assets/images/dashboard/img_1.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
-            <img src="assets/images/dashboard/img_4.jpg" class="mw-100 w-100 rounded" alt="image">
-          </div>
-          <div class="col-6 pl-1">
-            <img src="assets/images/dashboard/img_2.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
-            <img src="assets/images/dashboard/img_3.jpg" class="mw-100 w-100 rounded" alt="image">
-          </div>
-        </div>
-        <div class="d-flex mt-5 align-items-top">
-          <img src="assets/images/faces/face3.jpg" class="img-sm rounded-circle mr-3" alt="image">
-          <div class="mb-0 flex-grow">
-            <h5 class="mr-2 mb-2">School Website - Authentication Module.</h5>
-            <p class="mb-0 font-weight-light">It is a long established fact that a reader will be distracted by the readable
-              content of a page.</p>
-          </div>
-          <div class="ml-auto">
-            <i class="mdi mdi-heart-outline text-muted"></i>
-          </div>
-        </div>
+        <h4 class="card-title">Todo</h4>
+        <app-todo></app-todo>
       </div>
     </div>
   </div>

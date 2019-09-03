@@ -1,44 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import './assets/styles/variables';
-@import "../node_modules/compass-mixins/lib/compass";
-@import "../node_modules/compass-mixins/lib/animate";
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/mdi/scss/materialdesignicons";
-@import "./assets/styles/fonts";
-@import "./assets/styles/functions";
-@import "./assets/styles/mixins/animation";
-@import "./assets/styles/mixins/badges";
-@import "./assets/styles/mixins/buttons";
-@import "./assets/styles/mixins/misc";
-@import "./assets/styles/mixins/color-functions";
-@import "./assets/styles/mixins/cards";
-@import "./assets/styles/mixins/blockqoute";
-@import "./assets/styles/mixins/popovers";
-@import "./assets/styles/mixins/tooltips";
-@import "./assets/styles/background";
-@import "./assets/styles/forms";
-@import "./assets/styles/icons";
-@import "./assets/styles/tables";
-@import "./assets/styles/accordions";
-@import "./assets/styles/buttons";
-@import "./assets/styles/breadcrumbs";
-@import "./assets/styles/badges";
-@import "./assets/styles/cards";
-@import "./assets/styles/typography";
-@import "./assets/styles/preview";
-@import "./assets/styles/tooltips";
-@import "./assets/styles/popovers";
-@import "./assets/styles/lists";
-@import "./assets/styles/bootstrap-progress";
-@import "./assets/styles/bootstrap-alerts";
-@import "./assets/styles/tabs";
-@import "./assets/styles/dropdowns";
-@import "./assets/styles/pagination";
-@import "./assets/styles/reset";
-@import "./assets/styles/responsive";
-@import "./assets/styles/misc";
-@import "./assets/styles/utilities";
-@import "./assets/styles/demo";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import './assets/scss/variables';
+@import "~compass-mixins/lib/compass";
+@import "~compass-mixins/lib/animate";
+@import "~bootstrap/scss/bootstrap";
+@import "./assets/scss/fonts";
+@import "./assets/scss/functions";
+
+/* === Icon fonts === */
+@import "~@mdi/font/scss/materialdesignicons";
+
+
+/* === Template mixins === */
+@import "./assets/scss/mixins/animation";
+@import "./assets/scss/mixins/badges";
+@import "./assets/scss/mixins/buttons";
+@import "./assets/scss/mixins/misc";
+@import "./assets/scss/mixins/color-functions";
+@import "./assets/scss/mixins/cards";
+@import "./assets/scss/mixins/blockqoute";
+@import "./assets/scss/mixins/popovers";
+@import "./assets/scss/mixins/tooltips";
+
+/* === Core Styles === */
+@import "./assets/scss/background";
+@import "./assets/scss/typography";
+@import "./assets/scss/reset";
+@import "./assets/scss/responsive";
+@import "./assets/scss/misc";
+@import "./assets/scss/utilities";
+@import "./assets/scss/demo";
+@import "./assets/scss/spinner";
+
+/* === Components === */
+@import "./assets/scss/components/forms";
+@import "./assets/scss/components/checkbox-radio";
+@import "./assets/scss/components/icons";
+@import "./assets/scss/components/tables";
+@import "./assets/scss/components/accordions";
+@import "./assets/scss/components/buttons";
+@import "./assets/scss/components/breadcrumbs";
+@import "./assets/scss/components/badges";
+@import "./assets/scss/components/cards";
+@import "./assets/scss/components/preview";
+@import "./assets/scss/components/tooltips";
+@import "./assets/scss/components/popovers";
+@import "./assets/scss/components/lists";
+@import "./assets/scss/components/bootstrap-progress";
+@import "./assets/scss/components/bootstrap-alerts";
+@import "./assets/scss/components/tabs";
+@import "./assets/scss/components/dropdowns";
+@import "./assets/scss/components/pagination";
+@import "./assets/scss/components/portfolio";
+@import "./assets/scss/components/todo-list";
+
+@import "./assets/scss/components/landing-screens/auth";
+
+/* === Layout === */
+@import "./assets/scss/layout";

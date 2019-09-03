@@ -1,41 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
+import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsComponent } from './forms/forms.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { TablesComponent } from './tables/tables.component';
-import { IconsComponent } from './icons/icons.component';
-import { TypographyComponent } from './typography/typography.component';
-import { AlertsComponent } from './alerts/alerts.component';
-import { AccordionsComponent } from './accordions/accordions.component';
-import { BadgesComponent } from './badges/badges.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { TooltipsComponent } from './tooltips/tooltips.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { ProgressComponent } from './progress/progress.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'forms', component: FormsComponent },
-  { path: 'buttons', component: ButtonsComponent },
-  { path: 'tables', component: TablesComponent },
-  { path: 'icons', component: IconsComponent },
-  { path: 'typography', component: TypographyComponent },
-  { path: 'alerts', component: AlertsComponent },
-  { path: 'accordions', component: AccordionsComponent },
-  { path: 'badges', component: BadgesComponent },
-  { path: 'breadcrumbs', component: BreadcrumbsComponent },
-  { path: 'pagination', component: PaginationComponent },
-  { path: 'dropdowns', component: DropdownComponent },
-  { path: 'tabs', component: TabsComponent },
-  { path: 'tooltips', component: TooltipsComponent },
-  { path: 'carousel', component: CarouselComponent },
-  { path: 'progress', component: ProgressComponent }
+  { path: 'basic-ui', loadChildren: () => import('./basic-ui/basic-ui.module').then(m => m.BasicUiModule) },
+  { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsDemoModule) },
+  { path: 'forms', loadChildren: () => import('./forms/form.module').then(m => m.FormModule) },
+  { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
+  { path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule) },
+  { path: 'general-pages', loadChildren: () => import('./general-pages/general-pages.module').then(m => m.GeneralPagesModule) },
+  { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
+  { path: 'user-pages', loadChildren: () => import('./user-pages/user-pages.module').then(m => m.UserPagesModule) },
+  { path: 'error-pages', loadChildren: () => import('./error-pages/error-pages.module').then(m => m.ErrorPagesModule) },
 ];
 
 @NgModule({
