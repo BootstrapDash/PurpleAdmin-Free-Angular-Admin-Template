@@ -10,142 +10,105 @@
   </nav>
 </div>
 <div class="row">
-    <div class="col-12 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">ng2-toastr styles</h4>
-          <p class="card-description mb-0">
-            Click on the below buttons for notifications in different styles.
-          </p>
-          <div class="template-demo d-flex justify-content-between flex-wrap">
-            <button type="button" class="btn btn-success btn-fw" (click)="showSuccessToast()">Success</button>
-            <button type="button" class="btn btn-info btn-fw" (click)="showInfoToast()">Info</button>
-            <button type="button" class="btn btn-warning btn-fw" (click)="showWarningToast()">Warning</button>
-            <button type="button" class="btn btn-danger btn-fw" (click)="showDangerToast()">Danger</button>
-          </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Bootstrap alert</h4>
+        <p class="card-description">Add class <code>.alert .alert-*</code></p>
+        <div class="alert alert-success" role="alert">
+          You successfully read this important alert message.
         </div>
+        <div class="alert alert-info" role="alert">
+          This alert needs your attention, but it's not that important.
+        </div>
+        <div class="alert alert-warning" role="alert">
+          Better check yourself, you're not looking too good.
+        </div>
+        <div class="alert alert-danger" role="alert">
+          Change a few things up and try submitting again.
+        </div>
+        <div class="alert alert-primary" role="alert">
+            This is a primary alert
+        </div>
+        <div class="alert alert-secondary" role="alert">
+          This alert is not so important.
+          </div>
       </div>
     </div>
-    <div class="col-12 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">ng2-toastr positions</h4>
-          <p class="card-description">
-            The <code>positionClass</code> property can be used to specify the predefined positions
-            of toasts
-          </p>
-          <div class="template-demo d-flex justify-content-between flex-wrap">
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('bottom-left')">Bottom-left</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('bottom-right')">Bottom-right</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('bottom-center')">Bottom-center</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('bottom-full-width')">Bottom-full-width</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('top-left')">Top-left</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('top-right')">Top-right</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('top-center')">Top-center</button>
-            <button type="button" class="btn btn-outline-primary btn-sm" (click)="showToastPosition('top-full-width')">Top-full-width</button>
+  </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Custom alerts</h4>
+        <p class="card-description">
+          Custom HTML inside alert
+        </p>
+        <div class="card card-inverse-secondary mb-5">
+          <div class="card-body">
+            <p class="mb-4">
+              Well done! You successfully read this important alert message.
+            </p>
+            <button class="btn btn-secondary d-block d-sm-inline mx-auto">Ok</button>
+            <button class="btn btn-light d-block d-sm-inline mx-auto mt-2 mt-sm-0 ml-sm-1">Cancel</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Bootstrap alert</h4>
-          <p class="card-description">Add class <code>.alert .alert-*</code></p>
-          <div class="alert alert-success" role="alert">
-            You successfully read this important alert message.
+        <div class="card card-inverse-info">
+          <div class="card-body">
+            <p class="mb-4">
+              Heads up! This alert needs your attention, but it's not super important.
+            </p>
+            <button class="btn btn-info d-block d-sm-inline mx-auto">Ok</button>
+            <button class="btn btn-light d-block d-sm-inline mx-auto mt-2 mt-sm-0 ml-sm-1">Cancel</button>
           </div>
-          <div class="alert alert-info" role="alert">
-            This alert needs your attention, but it's not that important.
-          </div>
-          <div class="alert alert-warning" role="alert">
-            Better check yourself, you're not looking too good.
-          </div>
-          <div class="alert alert-danger" role="alert">
-            Change a few things up and try submitting again.
-          </div>
-          <div class="alert alert-primary" role="alert">
-              This is a primary alert
-          </div>
-          <div class="alert alert-secondary" role="alert">
-            This alert is not so important.
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Custom alerts</h4>
-          <p class="card-description">
-            Custom HTML inside alert
-          </p>
-          <div class="card card-inverse-secondary mb-5">
-            <div class="card-body">
-              <p class="mb-4">
-                Well done! You successfully read this important alert message.
-              </p>
-              <button class="btn btn-secondary d-block d-sm-inline mx-auto">Ok</button>
-              <button class="btn btn-light d-block d-sm-inline mx-auto mt-2 mt-sm-0 ml-sm-1">Cancel</button>
-            </div>
-          </div>
-          <div class="card card-inverse-info">
-            <div class="card-body">
-              <p class="mb-4">
-                Heads up! This alert needs your attention, but it's not super important.
-              </p>
-              <button class="btn btn-info d-block d-sm-inline mx-auto">Ok</button>
-              <button class="btn btn-light d-block d-sm-inline mx-auto mt-2 mt-sm-0 ml-sm-1">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Bootstrap alerts in fill colors</h4>
-          <p class="card-description">
-            Add class <code>.alert-fill-*</code> with <code>.alert</code>
-          </p>
-          <div class="alert alert-fill-primary" role="alert">
-            <i class="mdi mdi-information-outline"></i>
-            There! This is a primary alert.
-          </div>
-          <div class="alert alert-fill-success" role="alert">
-            <i class="mdi mdi-information-outline"></i>
-            Well done! You successfully read this important alert message.
-          </div>
-          <div class="alert alert-fill-info" role="alert">
-            <i class="mdi mdi-information-outline"></i>
-            Heads up! This alert needs your attention, but it's not super important.
-          </div>
-          <div class="alert alert-fill-warning" role="alert">
-            <i class="mdi mdi-information-outline"></i>
-            Warning! Better check yourself, you're not looking too good.
-          </div>
-          <div class="alert alert-fill-danger" role="alert">
-            <i class="mdi mdi-information-outline"></i>
-            Oh snap! Change a few things up and try submitting again.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Desktop notification</h4>
-          <p class="card-description">Create simple desktop notifications</p>
-          <form>
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Write some title here" value="Sample title" required>
-              <label class="mt-4" for="message">Message</label>
-              <textarea placeholder="Write some message here" id="message" class="form-control" required>Sample content</textarea>
-            </div>
-            <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Notify</button>
-          </form>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Bootstrap alerts in fill colors</h4>
+        <p class="card-description">
+          Add class <code>.alert-fill-*</code> with <code>.alert</code>
+        </p>
+        <div class="alert alert-fill-primary" role="alert">
+          <i class="mdi mdi-information-outline"></i>
+          There! This is a primary alert.
+        </div>
+        <div class="alert alert-fill-success" role="alert">
+          <i class="mdi mdi-information-outline"></i>
+          Well done! You successfully read this important alert message.
+        </div>
+        <div class="alert alert-fill-info" role="alert">
+          <i class="mdi mdi-information-outline"></i>
+          Heads up! This alert needs your attention, but it's not super important.
+        </div>
+        <div class="alert alert-fill-warning" role="alert">
+          <i class="mdi mdi-information-outline"></i>
+          Warning! Better check yourself, you're not looking too good.
+        </div>
+        <div class="alert alert-fill-danger" role="alert">
+          <i class="mdi mdi-information-outline"></i>
+          Oh snap! Change a few things up and try submitting again.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Desktop notification</h4>
+        <p class="card-description">Create simple desktop notifications</p>
+        <form>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Write some title here" value="Sample title" required>
+            <label class="mt-4" for="message">Message</label>
+            <textarea placeholder="Write some message here" id="message" class="form-control" required>Sample content</textarea>
+          </div>
+          <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Notify</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
