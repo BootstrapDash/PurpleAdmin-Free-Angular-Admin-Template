@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from "@angular/http";
 import { DatasService } from "./../../services/datas.service";
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 export type Item = { name: string, values:any };
 
@@ -11,18 +12,48 @@ export type Item = { name: string, values:any };
 })
 export class ChartjsComponent implements OnInit {
 
+  ////dropDown list for contry
+  form = new FormGroup({
+    contry: new FormControl('', Validators.required)
+  });
+  get f(){
+   return this.form.controls;
+  }
+  submit(){
+  console.log(this.form.value);
+  }
+  changeContry(e) {
+  console.log(e.target.value);
+  if (e.target.value=="World Wide"){
+    this.setWorldDataLabelForCharts(this.items);
+  }else{
+  this.selected=e.target.value;
+  this.setContryDataLabelForCharts(this.selected);
+}
+  }
+  //////////////
+
+
   items: Array<Item>;
   error: string;
-  arr2 = [];
-  arr3 = [];
+  selected : string="World Wide";
+  contries =[];
+  confirmed = [];
+  deaths = [];
+  recovered =[];
 
   lineChartData = [];
   lineChartLabels = [];
   barChartData =[];
   barChartLabels =[];
+  doughnutPieChartData =[];
+  areaChartData = [];
+  areaChartLabels = [];
   constructor(private http : Http, private firstService : DatasService) { }
   interval: any;
   mySub : any;
+
+
   ngOnInit() {
   this.refreshData();
   this.interval = setInterval(() => {
@@ -34,54 +65,108 @@ refreshData(){
  this.firstService.getAllItems().subscribe(
    data => {
      this.items = data;
-     //console.log(JSON.stringify(this.items));
-     this.arr2=[];
-     this.arr3=[];
-      let datatable = Object.values(this.items);
-      datatable.forEach(element => {
-
-        let elem = Object.values(element);
-        let sum = 0;
-        let sumcases = 0;
-          elem.forEach(e => {
-            sum+=e.deaths;
-            sumcases+=e.confirmed;
-            //console.log('data=',e.date);
-      });
-      this.arr3.push(sum);
-      this.arr2.push(sumcases);
-      });
-
-      this.lineChartLabels = Object.keys(this.items);
-      this.lineChartData=[{
-        label: 'cases',
-        data: this.arr2,
-
-        borderWidth: 1,
-        fill: false
-      },{
-      label: 'deaths',
-      data: this.arr3,
-      borderWidth: 1,
-      fill: false
-    }];
-    this.barChartData =[{
-      label: 'cases',
-      data: this.arr2,
-      borderWidth: 10,
-      fill: false
-    },{
-    label: 'deaths',
-    data: this.arr3,
-    borderWidth: 10,
-    fill: false
-  }];
-    this.barChartLabels = Object.keys(this.items);
+     console.log(this.items);
+     if (this.selected=="World Wide"){
+       this.setWorldDataLabelForCharts(this.items);
+     }else{
+     this.setContryDataLabelForCharts(this.selected);
+   }
      },
    error =>
    this.error = error.statusText);
 }
+setContryDataLabelForCharts(contry){
+  let datatable =Object.values(this.items[contry]);
+  let labels =[];
+  let death =[];
+  let confirm = [];
+  let recov =[];
 
+  datatable.forEach(element => {
+    element.date;
+    labels.push(element.date);
+    confirm.push(element.confirmed);
+
+    death.push(element.deaths);
+
+    recov.push(element.recovered);
+
+     });
+
+  this.lineChartLabels = this.barChartLabels= this.areaChartLabels = labels;
+  this.lineChartData = this.barChartData=this.areaChartData=[{
+    label: 'cases',
+    data: confirm,
+    borderColor: '#66fcf1',
+    borderWidth: 1,
+    fill: false
+  },{
+  label: 'deaths',
+  data: death,
+  borderColor: '#004687',
+  borderWidth: 1,
+  fill: false
+},{
+label: 'recovered',
+data: recov,
+borderColor: '#004687',
+borderWidth: 1,
+fill: false
+}];
+this.doughnutPieChartData = [
+  {
+    data: [death[death.length-1], recov[recov.length-1], confirm[confirm.length-1]],
+  }
+];
+
+}
+setWorldDataLabelForCharts(items){
+  this.contries = Object.keys(items);
+  let datatable = Object.values(items);
+  this.confirmed=[];
+  this.deaths=[];
+  this.recovered=[];
+    console.log('table',datatable);
+   datatable.forEach(element => {
+     let elem = Object.values(element);
+     let e=(elem[elem.length-1]);
+   this.deaths.push(e.deaths);
+   this.confirmed.push(e.confirmed);
+   this.recovered.push(e.recovered);
+   });
+   let dondatadeath =0;
+   let dondatarecover =0;
+   let dondataconfirmed=0;
+   this.deaths.forEach(element => {
+     dondatadeath+=element;
+   });
+   this.recovered.forEach(element => {
+     dondatarecover+=element;
+   });
+   this.confirmed.forEach(element => {
+     dondataconfirmed+=element;
+   });
+   this.lineChartLabels = this.barChartLabels= this.areaChartLabels = Object.keys(this.items);
+   this.lineChartData = this.barChartData=this.areaChartData=[{
+     label: 'cases',
+     data: this.confirmed,
+     borderColor: '#66fcf1',
+     borderWidth: 1,
+     fill: false
+   },{
+   label: 'deaths',
+   data: this.deaths,
+   borderColor: '#004687',
+   borderWidth: 1,
+   fill: false
+ }];
+ this.doughnutPieChartData = [
+   {
+     data: [dondatadeath, dondatarecover, dondataconfirmed],
+   }
+ ];
+
+}
 
   //__________
 
@@ -89,12 +174,25 @@ refreshData(){
 
 
   lineChartOptions = {
+    plugins: {
+        datalabels: {
+            color: 'black',
+            anchor: 'end',
+            align: 'top',
+            formatter: function (value) { return (value); },
+            font: { weight: 'bold' }
+        }},
     scales: {
       yAxes: [{
         ticks: {
           beginAtZero: true
         }
-      }]
+      }],
+      xAxes: [{
+        gridLines: {
+            display: false,
+        }
+        }]
     },
     legend: {
       display: true
@@ -112,55 +210,13 @@ refreshData(){
     }
   ];
 
+  barChartOptions = this.lineChartOptions ;
+
+  barChartColors = this.lineChartColors;
 
 
-  barChartOptions = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    },
-    legend: {
-      display: false
-    },
-    elements: {
-      point: {
-        radius: 0
-      }
-    }
-  };
 
-  barChartColors = [
-    {
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ]
-    }
-  ];
 
-  areaChartData = [{
-    label: '# of Votes',
-    data: [10, 19, 3, 5, 2, 3],
-    borderWidth: 1,
-    fill: true
-  }];
-
-  areaChartLabels = ["2013", "2014", "2014", "2015", "2016", "2017"];
 
   areaChartOptions = {};
 
@@ -172,13 +228,9 @@ refreshData(){
   ];
 
 
-  doughnutPieChartData = [
-    {
-      data: [30, 40, 30],
-    }
-  ];
 
-  doughnutPieChartLabels = ["Pink", "Blue", "Yellow"];
+
+  doughnutPieChartLabels = ["deaths", "recovered", "confirmed cases"];
 
   doughnutPieChartOptions = {
     responsive: true,
@@ -191,9 +243,9 @@ refreshData(){
   doughnutPieChartColors = [
     {
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)'
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
       ],
       borderColor: [
         'rgba(255,99,132,1)',
