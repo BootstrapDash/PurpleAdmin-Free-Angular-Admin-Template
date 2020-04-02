@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Response } from "@angular/http";
+import { DatasService } from "./../../services/datas.service";
+
+export type Item = { name: string, values:any };
 
 @Component({
   selector: 'app-chartjs',
@@ -6,14 +10,83 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chartjs.component.scss']
 })
 export class ChartjsComponent implements OnInit {
-  lineChartData = [{
-    label: '# of Votes',
-    data: [10, 19, 3, 5, 2, 3],
-    borderWidth: 1,
+
+  items: Array<Item>;
+  error: string;
+  arr2 = [];
+  arr3 = [];
+
+  lineChartData = [];
+  lineChartLabels = [];
+  barChartData =[];
+  barChartLabels =[];
+  constructor(private http : Http, private firstService : DatasService) { }
+  interval: any;
+  mySub : any;
+  ngOnInit() {
+  this.refreshData();
+  this.interval = setInterval(() => {
+  this.refreshData();
+}, 100000);
+}
+
+refreshData(){
+ this.firstService.getAllItems().subscribe(
+   data => {
+     this.items = data;
+     //console.log(JSON.stringify(this.items));
+     this.arr2=[];
+     this.arr3=[];
+      let datatable = Object.values(this.items);
+      datatable.forEach(element => {
+
+        let elem = Object.values(element);
+        let sum = 0;
+        let sumcases = 0;
+          elem.forEach(e => {
+            sum+=e.deaths;
+            sumcases+=e.confirmed;
+            //console.log('data=',e.date);
+      });
+      this.arr3.push(sum);
+      this.arr2.push(sumcases);
+      });
+
+      this.lineChartLabels = Object.keys(this.items);
+      this.lineChartData=[{
+        label: 'cases',
+        data: this.arr2,
+
+        borderWidth: 1,
+        fill: false
+      },{
+      label: 'deaths',
+      data: this.arr3,
+      borderWidth: 1,
+      fill: false
+    }];
+    this.barChartData =[{
+      label: 'cases',
+      data: this.arr2,
+      borderWidth: 10,
+      fill: false
+    },{
+    label: 'deaths',
+    data: this.arr3,
+    borderWidth: 10,
     fill: false
   }];
+    this.barChartLabels = Object.keys(this.items);
+     },
+   error =>
+   this.error = error.statusText);
+}
 
-  lineChartLabels = ["2013", "2014", "2014", "2015", "2016", "2017"];
+
+  //__________
+
+
+
 
   lineChartOptions = {
     scales: {
@@ -24,7 +97,7 @@ export class ChartjsComponent implements OnInit {
       }]
     },
     legend: {
-      display: false
+      display: true
     },
     elements: {
       point: {
@@ -39,14 +112,7 @@ export class ChartjsComponent implements OnInit {
     }
   ];
 
-  barChartData = [{
-    label: '# of Votes',
-    data: [10, 19, 3, 5, 2, 3],
-    borderWidth: 1,
-    fill: false
-  }];
 
-  barChartLabels = ["2013", "2014", "2014", "2015", "2016", "2017"];
 
   barChartOptions = {
     scales: {
@@ -210,9 +276,6 @@ export class ChartjsComponent implements OnInit {
     }
   ];
 
-  constructor() { }
 
-  ngOnInit() {
-  }
 
 }
