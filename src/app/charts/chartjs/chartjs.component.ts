@@ -53,20 +53,62 @@ export class ChartjsComponent implements  OnInit {
   doughnutPieChartData =[];
   areaChartData = [];
   areaChartLabels = [];
+  mapdata:any;
   constructor(private http : Http, private firstService : DatasService) { }
   interval: any;
   mySub : any;
+  t: Array<any>;
 ///////////////////////////////////////
 
   ngOnInit() {
-    const myMap = L.map('map').setView([33.25492, -8.50602], 3);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(myMap);
+
+
+
+  /*  const myMap = L.map('map').setView([33.25492, -8.50602], 3);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              maxZoom: 18,
+
+      }).addTo(myMap);
+
+*/
+
+
+this.setmapdata();
+///////////////
   this.refreshData();
   this.interval = setInterval(() => {
   this.refreshData();
 }, 100000);
+}
+///////
+setmapdata(){
+  let mymap = L.map('map').setView([0, 0], 1);
+  this.firstService.mapdata().subscribe(
+    data => { this.t = data ;
+              console.log("t",this.t);
+      //let mymap = L.map('map').setView([0, 0], 1);
+      let datatabl =this.t;
+
+      datatabl.forEach((e) => {
+          //console.log('e',e);
+          //let pop='<div><p> '+e.countryregion+'</p><p> Confirmed Cases: '+e.confirmed+'</p><p>Deaths: '+e.deaths' </p><p> Recovered:'+  e.recovered+'</p></div>';
+          if(!isNaN(e.confirmed)){
+          L.circle([e.location.lat, e.location.lng],{
+            color: '#F85C50',
+            fillColor: '#F85C50',
+            fillOpacity: 0.4,
+            radius: e.confirmed*5
+          }).addTo(mymap).bindPopup(' Contry: '+e.countryregion+' confirmed: '+e.confirmed+' deaths : '+e.deaths);
+        }
+  });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 18,
+          accessToken: 'pk.eyJ1Ijoibm91aGFpbGE3NSIsImEiOiJjazhnN2JpNHIwNDN2M25vNmlrbTRodnFoIn0.dBGGfkYJbAHubAodluyJNg'
+  }).addTo(mymap);
+      });
+
 }
 onAdressSubmit(form) {
     console.log(form.value.adress);
@@ -76,7 +118,7 @@ refreshData(){
  this.firstService.getAllItems().subscribe(
    data => {
      this.items = data;
-     console.log(this.items);
+     //console.log(this.items);
      if (this.selected=="World Wide"){
        this.setWorldDataLabelForCharts(this.items);
      }else{
@@ -137,7 +179,7 @@ setWorldDataLabelForCharts(items){
   this.confirmed=[];
   this.deaths=[];
   this.recovered=[];
-    console.log('table',datatable);
+    //console.log('table',datatable);
    datatable.forEach(element => {
      let elem = Object.values(element);
      let e=(elem[elem.length-1]);

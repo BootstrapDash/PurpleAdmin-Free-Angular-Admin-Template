@@ -15,5 +15,8 @@ constructor(private http : Http) { }
   getAllItems(){
     return this.http.get("https://pomber.github.io/covid19/timeseries.json").pipe(map(data => data.json() as Array<Item>));
   }
+  mapdata(){
+    return this.http.get("https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest").pipe(map(data => data.json()as Array<any>));
+  }
 
 }
