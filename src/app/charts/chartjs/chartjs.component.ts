@@ -228,6 +228,20 @@ setWorldDataLabelForCharts(items){
   ];
 
   barChartOptions = this.lineChartOptions ;
+  doughnutPieChartColors = [
+    {
+      backgroundColor: [
+        '#231F20',
+        '#8EAF0C',
+        '#F85C50'
+      ],
+      borderColor: [
+        '#231F20',
+        '#8EAF0C',
+        '#F85C50'
+      ]
+    }
+  ];
 
   barChartColors = this.doughnutPieChartColors;
 
@@ -257,20 +271,7 @@ setWorldDataLabelForCharts(items){
     }
   };
 
-  doughnutPieChartColors = [
-    {
-      backgroundColor: [
-        '#231F20',
-        '#8EAF0C',
-        '#F85C50'
-      ],
-      borderColor: [
-        '#231F20',
-        '#8EAF0C',
-        '#F85C50'
-      ]
-    }
-  ];
+
 
 
 
