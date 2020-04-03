@@ -99,6 +99,7 @@ setmapdata(){
             fillColor: '#F85C50',
             fillOpacity: 0.4,
             radius: e.confirmed*5
+            
           }).addTo(mymap).bindPopup(' Contry: '+e.countryregion+' confirmed: '+e.confirmed+' deaths : '+e.deaths);
         }
   });
