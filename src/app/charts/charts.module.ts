@@ -7,6 +7,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartjsComponent } from './chartjs/chartjs.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 
 const routes: Routes = [
   { path: 'chartjs', component: ChartjsComponent },
@@ -21,7 +23,8 @@ const routes: Routes = [
     HttpModule,
     JsonpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LeafletModule.forRoot()
   ]
 })
 export class ChartsDemoModule { }

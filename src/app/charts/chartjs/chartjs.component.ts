@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit } from '@angular/core';
 import { Http, Response } from "@angular/http";
 import { DatasService } from "./../../services/datas.service";
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import * as L from 'leaflet';
 
 export type Item = { name: string, values:any };
 
@@ -10,7 +11,9 @@ export type Item = { name: string, values:any };
   templateUrl: './chartjs.component.html',
   styleUrls: ['./chartjs.component.scss']
 })
-export class ChartjsComponent implements OnInit {
+export class ChartjsComponent implements  OnInit {
+
+
 
   ////dropDown list for contry
   form = new FormGroup({
@@ -25,6 +28,7 @@ export class ChartjsComponent implements OnInit {
   changeContry(e) {
   console.log(e.target.value);
   if (e.target.value=="World Wide"){
+    this.selected=e.target.value;
     this.setWorldDataLabelForCharts(this.items);
   }else{
   this.selected=e.target.value;
@@ -52,15 +56,22 @@ export class ChartjsComponent implements OnInit {
   constructor(private http : Http, private firstService : DatasService) { }
   interval: any;
   mySub : any;
-
+///////////////////////////////////////
 
   ngOnInit() {
+    const myMap = L.map('map').setView([33.25492, -8.50602], 3);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(myMap);
   this.refreshData();
   this.interval = setInterval(() => {
   this.refreshData();
 }, 100000);
 }
-
+onAdressSubmit(form) {
+    console.log(form.value.adress);
+  }
+////////////////////////////
 refreshData(){
  this.firstService.getAllItems().subscribe(
    data => {
@@ -97,19 +108,19 @@ setContryDataLabelForCharts(contry){
   this.lineChartData = this.barChartData=this.areaChartData=[{
     label: 'cases',
     data: confirm,
-    borderColor: '#66fcf1',
+    borderColor: '#F85C50',
     borderWidth: 1,
     fill: false
   },{
   label: 'deaths',
   data: death,
-  borderColor: '#004687',
+  borderColor: '#231F20',
   borderWidth: 1,
   fill: false
 },{
 label: 'recovered',
 data: recov,
-borderColor: '#004687',
+borderColor: '#A7E541',
 borderWidth: 1,
 fill: false
 }];
@@ -150,15 +161,21 @@ setWorldDataLabelForCharts(items){
    this.lineChartData = this.barChartData=this.areaChartData=[{
      label: 'cases',
      data: this.confirmed,
-     borderColor: '#66fcf1',
+     borderColor: '#F85C50',
      borderWidth: 1,
      fill: false
    },{
    label: 'deaths',
    data: this.deaths,
-   borderColor: '#004687',
+   borderColor: '#231F20',
    borderWidth: 1,
    fill: false
+ },{
+ label: 'recovered',
+ data: this.recovered,
+ borderColor:'#8EAF0C',
+ borderWidth: 1,
+ fill: false
  }];
  this.doughnutPieChartData = [
    {
@@ -212,7 +229,7 @@ setWorldDataLabelForCharts(items){
 
   barChartOptions = this.lineChartOptions ;
 
-  barChartColors = this.lineChartColors;
+  barChartColors = this.doughnutPieChartColors;
 
 
 
@@ -243,90 +260,19 @@ setWorldDataLabelForCharts(items){
   doughnutPieChartColors = [
     {
       backgroundColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)'
+        '#231F20',
+        '#8EAF0C',
+        '#F85C50'
       ],
       borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)'
+        '#231F20',
+        '#8EAF0C',
+        '#F85C50'
       ]
     }
   ];
 
 
-  scatterChartData = [
-    {
-      label: 'First Dataset',
-      data: [{
-          x: -10,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 3
-        },
-        {
-          x: -25,
-          y: 5
-        },
-        {
-          x: 40,
-          y: 5
-        }
-      ],
-      borderWidth: 1
-    },
-    {
-      label: 'Second Dataset',
-      data: [{
-          x: 10,
-          y: 5
-        },
-        {
-          x: 20,
-          y: -30
-        },
-        {
-          x: -25,
-          y: 15
-        },
-        {
-          x: -10,
-          y: 5
-        }
-      ],
-      borderWidth: 1
-    }
-  ];
-
-  scatterChartOptions = {
-    scales: {
-      xAxes: [{
-        type: 'linear',
-        position: 'bottom'
-      }]
-    }
-  };
-
-  scatterChartColors = [
-    {
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)'      ]
-    },
-    {
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(54, 162, 235, 1)'
-      ]
-    }
-  ];
 
 
 

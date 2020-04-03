@@ -7,7 +7,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
-
+import { IgxGeographicMapCoreModule, IgxGeographicMapModule } from 'igniteui-angular-maps';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -19,6 +19,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
     TodoListComponent,
     TodoComponent,
     SpinnerComponent,
-    ContentAnimateDirective
+    ContentAnimateDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,10 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
     ReactiveFormsModule,
     ChartsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    IgxGeographicMapCoreModule,
+    IgxGeographicMapModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
