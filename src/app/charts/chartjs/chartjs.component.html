@@ -1,64 +1,77 @@
 <div class="page-header">
-  <h3 class="page-title">
-    ChartJs
-  </h3>
+  <h1 class="page-title">
+    Data Visualisation
+  </h1>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="javascript:;">Charts</a></li>
-      <li class="breadcrumb-item active" aria-current="page">ChartJs</li>
+    <li class="breadcrumb-item"><a href="javascript:;">Data Visualisation </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> ChartJs/leaflet </li>
     </ol>
   </nav>
 </div>
 <div class="row">
-  <div class="col-lg-6 grid-margin stretch-card">
+  <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
+
+
       <div class="card-body">
-        <h4 class="card-title">Line chart</h4>
+      <!--<div style="height: 300px;"leaflet id="map"></div>-->
+        <h2 class="card-title"> WORLD WIDE COVID-19 CASES </h2>
+        <div style="height: 300px;"leaflet id="map"></div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+         <div class="form-group">
+             <label for="contry"><h2> Select Contry: </h2></label>
+             <select formControlName="contry" class="form-control" (change)="changeContry($event)">
+                 <option disabled>Select contry</option>
+                 <option> World Wide </option>
+                 <option *ngFor="let c of contries">{{c}}</option>
+             </select>
+             <div *ngIf="f.contry.touched && f.contry.invalid" class="alert alert-danger">
+                 <div *ngIf="f.contry.errors.required">contry is required.</div>
+             </div>
+         </div>
+
+     </form>
+        <h4 class="card-title"> {{selected}} line Chart </h4>
         <canvas baseChart [chartType]="'line'" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"></canvas>
       </div>
     </div>
   </div>
-  <div class="col-lg-6 grid-margin stretch-card">
+  <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Bar chart</h4>
+        <h4 class="card-title">{{selected}} Bar chart</h4>
         <canvas baseChart [chartType]="'bar'" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"></canvas>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-6 grid-margin stretch-card">
+  <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Area chart</h4>
+        <h4 class="card-title">{{selected}} Area chart</h4>
         <canvas baseChart [chartType]="'line'" [datasets]="areaChartData" [labels]="areaChartLabels" [options]="areaChartOptions" [colors]="areaChartColors"></canvas>
       </div>
     </div>
   </div>
-  <div class="col-lg-6 grid-margin stretch-card">
+  <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Doughnut chart</h4>
+        <h4 class="card-title">{{selected}} Doughnut chart</h4>
         <canvas baseChart [chartType]="'doughnut'" [datasets]="doughnutPieChartData" [labels]="doughnutPieChartLabels" [options]="doughnutPieChartOptions" [colors]="doughnutPieChartColors"></canvas>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+  <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Pie chart</h4>
+        <h4 class="card-title">{{selected}} Pie chart</h4>
         <canvas baseChart [chartType]="'pie'" [datasets]="doughnutPieChartData" [labels]="doughnutPieChartLabels" [options]="doughnutPieChartOptions" [colors]="doughnutPieChartColors"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Scatter chart</h4>
-        <canvas baseChart [chartType]="'scatter'" [datasets]="scatterChartData" [options]="scatterChartOptions" [colors]="scatterChartColors"></canvas>
       </div>
     </div>
   </div>

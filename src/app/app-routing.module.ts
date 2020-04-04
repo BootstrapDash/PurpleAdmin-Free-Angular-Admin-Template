@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/charts/chartjs', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'basic-ui', loadChildren: () => import('./basic-ui/basic-ui.module').then(m => m.BasicUiModule) },
   { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsDemoModule) },

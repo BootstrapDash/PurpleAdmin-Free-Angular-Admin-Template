@@ -9,15 +9,15 @@ import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConf
 export class AppComponent implements OnInit{
   title = 'demo1';
 
-  showSidebar: boolean = true;
+  showSidebar: boolean = false;
   showNavbar: boolean = true;
   showFooter: boolean = true;
   isLoading: boolean;
 
   constructor(private router: Router) {
-    
+
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
-    router.events.forEach((event) => { 
+    router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         if((event['url'] == '/user-pages/login') || (event['url'] == '/user-pages/register') || (event['url'] == '/error-pages/404') || (event['url'] == '/error-pages/500') ) {
           this.showSidebar = false;
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit{
     });
 
     // Spinner for lazyload modules
-    router.events.forEach((event) => { 
+    router.events.forEach((event) => {
       if (event instanceof RouteConfigLoadStart) {
           this.isLoading = true;
       } else if (event instanceof RouteConfigLoadEnd) {
