@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -17,6 +17,20 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 
+import { AccordionsComponent } from "./ui-elements/accordions/accordions.component";
+import { AlertsComponent } from "./ui-elements/alerts/alerts.component";
+import { BadgesComponent } from "./ui-elements/badges/badges.component";
+import { BreadcrumbsComponent } from "./ui-elements/breadcrumbs/breadcrumbs.component";
+import { ButtonsComponent } from "./ui-elements/buttons/buttons.component";
+import { CarouselComponent } from "./ui-elements/carousel/carousel.component";
+import { DropdownComponent } from "./ui-elements/dropdown/dropdown.component";
+import { PaginationComponent } from "./ui-elements/pagination/pagination.component";
+import { ProgressbarComponent } from "./ui-elements/progressbar/progressbar.component";
+import { TablesComponent } from "./ui-elements/tables/tables.component";
+import { TabsComponent } from "./ui-elements/tabs/tabs.component";
+import { TooltipsComponent } from "./ui-elements/tooltips/tooltips.component";
+import { TypographyComponent } from "./ui-elements/typography/typography.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +41,20 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
     TodoListComponent,
     TodoComponent,
     SpinnerComponent,
-    ContentAnimateDirective
+    ContentAnimateDirective,
+    TabsComponent,
+    AccordionsComponent,
+    AlertsComponent,
+    BadgesComponent,
+    BreadcrumbsComponent,
+    ButtonsComponent,
+    CarouselComponent,
+    DropdownComponent,
+    PaginationComponent,
+    ProgressbarComponent,
+    TablesComponent,
+    TooltipsComponent,
+    TypographyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +63,10 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
