@@ -1,6 +1,10 @@
 # Purple Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+
+<h1>Demo</h1>
+
+[![N|Solid](preview.jpg)](https://www.bootstrapdash.com/product/purple-free-angular/)
 
 ## Development server
 

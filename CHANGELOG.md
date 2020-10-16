@@ -1,6 +1,10 @@
 CHANGELOG
 =========
-
+V 4.0.0
+------
+ - Updated to angular version 10
+ - Other bug fixes
+ - 
 V 3.0.0
 ------
  - Updated to angular version 8

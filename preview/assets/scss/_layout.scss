@@ -1,0 +1,11 @@
+/* Layouts */
+
+
+// Sidebar Icon Only
+.sidebar-icon-only {
+  .main-panel {
+    @media(min-width: 992px) {
+      width: calc(100% - #{$sidebar-width-icon});
+    }
+  }
+}

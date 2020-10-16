@@ -44,8 +44,8 @@ export class NavbarComponent implements OnInit {
   }
 
   // toggle right sidebar
-  toggleRightSidebar() {
-    document.querySelector('#right-sidebar').classList.toggle('open');
-  }
+  // toggleRightSidebar() {
+  //   document.querySelector('#right-sidebar').classList.toggle('open');
+  // }
 
 }

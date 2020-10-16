@@ -70,7 +70,7 @@
             }
             color: $sidebar-menu-arrow-color;
             &:before{
-              content: "\f141";
+              content: "\f0141";
               font-size: inherit;
               color: inherit;
             }
@@ -101,7 +101,7 @@
         &[aria-expanded="true"]{
           .menu-arrow{
             &:before{
-              content: "\f140";
+              content: "\F0140";
             }
           }
         }

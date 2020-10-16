@@ -1,0 +1,134 @@
+.nav-tabs {
+	.nav-link {
+		background: $nav-tabs-link-bg;
+		color: $nav-tabs-link-color;
+		border-radius: 0;
+		border: 1px solid $border-color;
+		padding: .75rem 1.5rem;
+	}
+	.nav-item {
+		&:first-child {
+			.nav-link {
+				border-radius: 4px 0 0 0;
+			}	
+		}
+		&:last-child {
+			.nav-link {
+				border-radius: 0 4px 0 0;
+			}
+		}
+	}
+}
+
+.nav-pills {
+	border-bottom: 1px solid $border-color;
+	padding-bottom: 1rem;
+	.nav-link {
+		border: 1px solid $border-color;
+		padding: .5rem 2rem;
+	}
+	.nav-item {
+		margin-right: 1rem;
+	}
+}
+.pills-vertical {
+	@extend .row;
+	.nav-pills {
+		@extend .col-4;
+		@extend .flex-column;
+		border-bottom: 0;
+		.nav-item {
+			margin-right: 0;
+			margin-bottom: 1rem;
+			.nav-link {
+				padding: .5rem 1.5rem;
+			}
+		}
+	}
+	.tab-content {
+		@extend .col-8;
+		border-top: 1px solid $border-color;
+	}
+}
+
+/* gradient pills */
+@each $color, $value in $theme-colors {
+  	.pills-#{$color} {
+		.nav-pills {
+			.nav-link {
+				color: $value;
+				&.active {
+					background: theme-gradient-color($color);
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+
+.tab-content {
+	border: 1px solid $border-color;
+	border-top: 0;
+	padding: 2rem 1rem;
+	text-align: justify;
+	&.tab-content-custom-pill {
+		border: 0;
+		padding-left: 0;
+	}
+}
+
+.tab-vertical {
+	@extend .row;
+	.nav-tabs {
+		@extend .col-4;
+		@extend .flex-column;
+		border-bottom: 0;
+		.nav-link {
+			&.active {
+				border-bottom-color: $border-color;
+			}
+		}
+		.nav-item {
+			&:first-child {
+				.nav-link {
+					border-radius: 4px 4px 0 0;
+				}	
+			}
+			&:last-child {
+				.nav-link {
+					border-radius: 0 0 4px 4px;
+				}
+			}
+		}
+	}
+	.tab-content {
+		@extend .col-8;
+		border-top: 1px solid $border-color;
+	}
+}
+
+.tab-vertical-custom {
+	@extend .tab-vertical;
+	.nav-tabs {
+		background: theme-gradient-color(primary);
+		border-radius: 4px;
+		@extend .col-3;
+		.nav-link {
+			background: transparent;
+			border-color: rgba($white, .2);
+			color: darken(theme-color(primary), 30%);
+			font-family: $type1-bold;
+			padding: 1.75rem;
+			&.active {
+				color: $white;
+				border-color: rgba($white, .2);
+			}
+		}
+	}
+	&.tab-content {
+		@extend .col-9;
+		border: 0;
+		padding-top: 0;
+	}
+}
