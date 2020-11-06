@@ -97,3 +97,52 @@ code {
     }
   }
 }
+.purchase-popup {
+  width: 100%;
+  z-index: 9999;
+  background: #fff;
+  padding: 15px;
+  display: flex;
+  margin-bottom: 1rem;
+  @include media-breakpoint-down(md) { 
+    padding: 15px 20px; 
+    display: block;
+  }
+
+
+  .btn {
+    margin-right: 20px;
+    font-weight: 500;
+    &.purchase-button {
+      color: #fff;
+      border: none;
+      line-height: 1;
+      vertical-align: middle;
+      min-height: auto;
+    }
+  }
+
+  p {
+    margin-bottom: auto;
+    margin-top: auto;
+    color: #1c273c;
+    font-weight: 400;
+    vertical-align: middle;
+    line-height: 1;
+    @include media-breakpoint-down(md) { 
+      margin-bottom: 10px;
+    }
+  }
+
+  i {
+    vertical-align: middle;
+    line-height: 1;
+    margin: auto 0;
+    color: darken(#e4e4e4,20%);
+  }
+}
+.removeProbanner {
+  #proBanner {
+    display: none;
+  }
+}
