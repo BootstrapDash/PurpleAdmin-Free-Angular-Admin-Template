@@ -23,7 +23,7 @@
     "@mdi/font": "^5.7.55",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "bootstrap": "^4.5.3",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "compass-mixins": "^0.12.10",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.4.2",
