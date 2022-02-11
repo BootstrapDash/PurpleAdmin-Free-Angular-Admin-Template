@@ -27,7 +27,7 @@
     "compass-mixins": "^0.12.10",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.4.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.3",
     "zone.js": "~0.11.1"
